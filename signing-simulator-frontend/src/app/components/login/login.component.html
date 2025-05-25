@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Login Page</title>
+    
+  </head>
+  <body>
+    
+      <div class="login-container">
+          <h2>Login</h2>
+          <form >
+              <input type="text" name="username" placeholder="Username" required [(ngModel)]="userInfo.user">
+              <input type="password" name="password" placeholder="Password" required [(ngModel)]="userInfo.password">
+              <button  id="jokeBtn"class="rounded-lg bg-blue-500 px-4 py-2 text-white" (click)="fetchLogin()">
+                  Login
+              </button>
+          </form>
+
+          {{errorMsg}}
+      </div>
+  </body>
+</html>
