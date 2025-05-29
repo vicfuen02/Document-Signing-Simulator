@@ -40,11 +40,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     public User createUser(User user) {
-        LOGGER.info("create user service: " + user.toString());
+
         user.setPassword(this.passwordsUtils.encryptPass(user.getPassword()));
-        Long result = this.userDAO.createUser(user);
-        LOGGER.info("result insert: " + result);
-        return user;
+        return this.userDAO.createUser(user);
     }
 
 

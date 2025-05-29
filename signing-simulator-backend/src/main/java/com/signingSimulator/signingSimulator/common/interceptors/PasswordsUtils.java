@@ -1,8 +1,9 @@
 package com.signingSimulator.signingSimulator.common.interceptors;
 
-import org.springframework.stereotype.Controller;
 
-@Controller
+import org.springframework.stereotype.Component;
+
+@Component
 public class PasswordsUtils {
 
 

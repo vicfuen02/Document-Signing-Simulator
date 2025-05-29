@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    Long createUser(User userEntity);
+    User createUser(User userEntity);
 
     List<User> getAll();
 

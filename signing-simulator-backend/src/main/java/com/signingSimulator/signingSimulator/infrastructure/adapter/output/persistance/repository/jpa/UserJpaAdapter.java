@@ -26,8 +26,12 @@ public class UserJpaAdapter implements UserDAO {
 
 
     @Override
-    public Long createUser(User user) {
-        return userJpaRepository.save(userServiceMapper.toEntity(user)).getId();
+    public User createUser(User user) {
+        return userServiceMapper.toDTO(
+                userJpaRepository.save(
+                        userServiceMapper.toEntity(user)
+                )
+        );
     }
 
     @Override
