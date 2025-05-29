@@ -6,21 +6,21 @@ import java.util.Date;
 public class Certificate {
 
 
-    private String id;
+    private Long id;
 
     private String name;
     private String certificate;
     private String password;
-    private String userId;
+    private User user;
     private Date dateFrom;
     private Date dateTo;
 
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,12 +48,12 @@ public class Certificate {
         this.password = password;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDateFrom() {

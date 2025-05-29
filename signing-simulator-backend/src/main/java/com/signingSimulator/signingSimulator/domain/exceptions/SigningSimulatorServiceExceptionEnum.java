@@ -1,6 +1,6 @@
 package com.signingSimulator.signingSimulator.domain.exceptions;
 
-public enum ServiceExceptionEnum {
+public enum SigningSimulatorServiceExceptionEnum {
 
     USER_NOT_FOUND ("LGI001", "The user does not exists"),
     WRONG_PASSWORD ("LGI002", "Wrong password"),
@@ -8,6 +8,7 @@ public enum ServiceExceptionEnum {
     CERTIFICATES_EMPTY ("CTR001", "The user has no certificates uploaded"),
     CERT_UPLOAD_ERROR ("CTR002", "Error uploading certificate"),
     CERT_EMPTY_PASSWORD ("CTR003  ", "Certificate password can not be empty"),
+    CERTIFICATES_NOT_FOUND ("CTR004", "Certification not found"),
     WRONG_CERTIFICATE_PASSWORD ("SGN001", "Wrong certificate password")
 
     ;
@@ -16,7 +17,7 @@ public enum ServiceExceptionEnum {
     private String code;
     private String message;
 
-    ServiceExceptionEnum(String code, String message) {
+    SigningSimulatorServiceExceptionEnum(String code, String message) {
         this.code = code;
         this.message = message;
     }

@@ -6,8 +6,9 @@ import java.util.List;
 public interface CertificateDAO {
 
 
-    List<Certificate> getCertificateByUserId(String userId);
+    List<Certificate> getCertificatesByUserId(Long userId);
 
-    Boolean uploadCertificate(String userId, Certificate certificate);
+    Certificate uploadCertificate(Certificate certificate);
+    Certificate getCertificateById(Long id);
 
 }

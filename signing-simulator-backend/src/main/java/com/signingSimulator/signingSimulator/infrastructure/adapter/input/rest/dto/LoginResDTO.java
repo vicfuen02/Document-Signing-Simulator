@@ -1,22 +1,19 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.UserEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import com.signingSimulator.signingSimulator.domain.User;
 
-@Entity
+
 public class LoginResDTO {
 
-    @Id
+
     private String token;
 
     private Boolean success = false;
 
     private String message;
 
-    @OneToOne
-    private UserEntity user;
+
+    private User user;
 
 
 
@@ -31,11 +28,11 @@ public class LoginResDTO {
         this.token = token;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

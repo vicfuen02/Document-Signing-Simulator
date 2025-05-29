@@ -4,52 +4,38 @@ package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.
 
 public class DocumentReqDTO {
 
-    private String documentBytes;
+    private String document;
 
-    private Boolean signed;
-
+    private Long certificateId;
     private String certificatePassword;
 
 
     public DocumentReqDTO() {
     }
 
-    private DocumentReqDTO(String documentBytes, Boolean signed, String certificatePassword) {
-        this.documentBytes = documentBytes;
-        this.signed = signed;
-        this.certificatePassword = certificatePassword;
+
+    public String getDocument() {
+        return document;
     }
 
-    public DocumentReqDTO build() {
-        return new DocumentReqDTO(documentBytes, signed, certificatePassword);
-    }
-
-    public String getDocumentBytes() {
-        return documentBytes;
-    }
-
-    public DocumentReqDTO setDocumentBytes(String documentBytes) {
-        this.documentBytes = documentBytes;
-        return this;
-    }
-
-    public Boolean getSigned() {
-        return signed;
-    }
-
-    public DocumentReqDTO setSigned(Boolean signed) {
-        this.signed = signed;
-        return this;
+    public void setDocument(String document) {
+        this.document = document;
     }
 
     public String getCertificatePassword() {
         return certificatePassword;
     }
 
-    public DocumentReqDTO setCertificatePassword(String certificatePassword) {
+    public void setCertificatePassword(String certificatePassword) {
         this.certificatePassword = certificatePassword;
-        return this;
     }
 
 
+    public Long getCertificateId() {
+        return certificateId;
+    }
+
+    public void setCertificateId(Long certificateId) {
+        this.certificateId = certificateId;
+    }
 }

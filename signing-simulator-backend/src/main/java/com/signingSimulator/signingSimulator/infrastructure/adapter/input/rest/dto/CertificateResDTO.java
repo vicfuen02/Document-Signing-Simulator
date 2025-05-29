@@ -1,50 +1,69 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.CertificateEntity;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
+import java.util.Date;
+
 public class CertificateResDTO {
 
 
-    private Boolean success = false;
+    private Long id;
 
-    @Id
-    private String message;
+    private String name;
+    private String certificate;
+    private UserResDTO user;
+    private Date dateFrom;
+    private Date dateTo;
 
-    @ElementCollection
-    private List<Certificate> certificates = new ArrayList<>();
 
     public CertificateResDTO() {
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public Long getId() {
+        return id;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getName() {
+        return name;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Certificate> getCertificates() {
-        return certificates;
+    public String getCertificate() {
+        return certificate;
     }
 
-    public void setCertificates(List<Certificate> certificates) {
-        this.certificates = certificates;
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
+    }
+
+    public UserResDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserResDTO user) {
+        this.user = user;
+    }
+
+    public Date getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
     }
 }

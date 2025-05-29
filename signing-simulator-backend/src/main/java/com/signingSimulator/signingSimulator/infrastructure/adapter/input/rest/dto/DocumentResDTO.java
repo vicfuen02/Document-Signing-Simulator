@@ -1,10 +1,12 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
-public class Document {
+
+
+public class DocumentResDTO {
 
     private String document;
-
     private Boolean signed;
+
 
     public String getDocument() {
         return document;

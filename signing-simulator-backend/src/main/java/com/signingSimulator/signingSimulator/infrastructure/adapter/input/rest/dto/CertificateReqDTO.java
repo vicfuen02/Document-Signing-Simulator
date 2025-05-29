@@ -1,49 +1,64 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.CertificateEntity;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
-@Entity
 public class CertificateReqDTO {
 
 
-    private Boolean success = false;
+    private String name;
+    private String certificate;
+    private String password;
+    private Long userId;
+    private Date dateFrom;
+    private Date dateTo;
 
-    @Id
-    private String message;
 
-    @ElementCollection
-    private List<CertificateEntity> certificates = new ArrayList<>();
-
-    public CertificateReqDTO() {
+    public String getName() {
+        return name;
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public String getCertificate() {
+        return certificate;
     }
 
-    public String getMessage() {
-        return message;
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public Long getUserId() {
+        return userId;
     }
 
-    public List<CertificateEntity> getCertificates() {
-        return certificates;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public void setCertificates(List<CertificateEntity> certificates) {
-        this.certificates = certificates;
+    public Date getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

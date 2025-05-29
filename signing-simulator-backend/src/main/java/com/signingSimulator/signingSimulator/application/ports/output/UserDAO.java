@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface UserDAO {
 
-    int createUser(User userEntity);
+    Long createUser(User userEntity);
 
     List<User> getAll();
 
-    User getById(String id);
+    User getById(Long id);
 
     User getByUserName(String userName);
 

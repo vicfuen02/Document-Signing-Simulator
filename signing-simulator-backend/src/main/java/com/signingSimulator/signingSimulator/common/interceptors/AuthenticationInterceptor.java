@@ -33,18 +33,19 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         LOGGER.info(request.getRequestURI());
         String uri = request.getRequestURI();
-        if (uri.equals("/login/login")) {
+        if (uri.equals("/login")) {
             return HandlerInterceptor.super.preHandle(request, response, handler);
         }
 
-        Boolean hasAccess = this.baseRestController.hasAccess(request);
-
-        if (!hasAccess) {
-            response.getWriter().write(RestControllerExceptionEnum.USER_NOT_LOGGED.getMessage());
-            response.setStatus(HttpStatus.NOT_FOUND.value());
-        }
-
-        return hasAccess;
+//        Boolean hasAccess = this.baseRestController.hasAccess(request);
+//
+//        if (!hasAccess) {
+//            response.getWriter().write(RestControllerExceptionEnum.USER_NOT_LOGGED.getMessage());
+//            response.setStatus(HttpStatus.NOT_FOUND.value());
+//        }
+//
+//        return hasAccess;
+        return true;
     }
 
     @Override

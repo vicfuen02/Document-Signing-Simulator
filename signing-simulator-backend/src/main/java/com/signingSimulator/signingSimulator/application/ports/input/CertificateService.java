@@ -1,13 +1,17 @@
 package com.signingSimulator.signingSimulator.application.ports.input;
 
 import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceException;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateResDTO;
+
+import java.util.List;
 
 public interface CertificateService {
 
-    CertificateResDTO getCertificateByUserId(String userId);
+    List<Certificate> getCertificatesByUserId(Long userId);
 
-    CertificateResDTO uploadCertificate(String userId, Certificate certificate) throws ServiceException;
+    List<Certificate> uploadCertificate(Certificate certificate);
+
+    Certificate getCertificateById(Long id);
+
+    Boolean checkCertificateCredentials(Certificate certificate);
 
 }

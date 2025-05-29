@@ -1,19 +1,20 @@
 package com.signingSimulator.signingSimulator.application.service;
 
+import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import com.signingSimulator.signingSimulator.application.ports.output.CertificateDAO;
+import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
 import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.CertificateEntity;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.jpa.CertificateJpaRepository;
 import com.signingSimulator.signingSimulator.application.ports.input.CertificateService;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceException;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceExceptionEnum;
+import com.signingSimulator.signingSimulator.domain.User;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateResDTO;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,43 +22,61 @@ public class CertificateServiceImpl implements CertificateService {
 
     Logger LOGGER = LoggerFactory.getLogger(CertificateServiceImpl.class);
 
-    @Autowired
+
     private CertificateDAO certificateDAO;
+    private UserService userService;
 
-    public CertificateResDTO getCertificateByUserId(String userId) {
-        CertificateResDTO response = new CertificateResDTO();
-        if (userId == null) {
-            response.setCertificates(new ArrayList<>());
-            return response;
-        }
+    private PasswordsUtils passwordsUtils;
 
-        List<Certificate> certificates = this.certificateDAO.getCertificateByUserId(userId);
-        response.setCertificates(certificates);
-        response.setSuccess(true);
-        return response;
+    @Autowired
+    public CertificateServiceImpl(CertificateDAO certificateDAO, PasswordsUtils passwordsUtils, UserService userService) {
+        this.certificateDAO = certificateDAO;
+        this.passwordsUtils = passwordsUtils;
+        this.userService = userService;
     }
 
-    public CertificateResDTO uploadCertificate(String userId, Certificate certificate) throws ServiceException {
+    public List<Certificate> getCertificatesByUserId(Long userId) {
+        if (userId == null) {
+            return null;
+        }
 
-        CertificateResDTO response = new CertificateResDTO();
+        List<Certificate> certificates = this.certificateDAO.getCertificatesByUserId(userId);
+        return certificates;
+    }
+
+    public Certificate getCertificateById(Long id) {
+        return this.certificateDAO.getCertificateById(id);
+    }
+
+
+    @Transactional
+    public List<Certificate> uploadCertificate(Certificate certificate) {
+
         if (certificate == null) {
-            return response;
+            return null;
         }
 
         if (certificate.getPassword() == null || certificate.getPassword().isEmpty()) {
-            throw new ServiceException(ServiceExceptionEnum.CERT_EMPTY_PASSWORD);
+            throw new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.CERT_EMPTY_PASSWORD);
         }
 
-        Boolean uploaded = this.certificateDAO.uploadCertificate(userId, certificate);
-        if (!uploaded) {
-            LOGGER.info("Error uploading document");
-            throw new ServiceException(ServiceExceptionEnum.CERT_UPLOAD_ERROR);
+        User user = this.userService.getById(certificate.getUser().getId());
+        certificate.setUser(user);
+
+        Certificate cert = this.certificateDAO.uploadCertificate(certificate);
+        if (cert == null) {
+            throw new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.CERT_UPLOAD_ERROR);
         }
 
-        List<Certificate> certificates = this.certificateDAO.getCertificateByUserId(userId);
-        response.setCertificates(certificates);
-        response.setSuccess(true);
-        return response;
+        List<Certificate> certificates = this.certificateDAO.getCertificatesByUserId(cert.getUser().getId());
+
+        return certificates;
+    }
+
+    public Boolean checkCertificateCredentials(Certificate certificate) {
+
+        Certificate cert = this.getCertificateById(certificate.getId());
+        return cert.getPassword().equals(this.passwordsUtils.encryptPass(certificate.getPassword()));
     }
 
 }

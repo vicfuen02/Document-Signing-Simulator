@@ -3,11 +3,12 @@ package com.signingSimulator.signingSimulator.application.service;
 import com.signingSimulator.signingSimulator.application.ports.input.LoginService;
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import com.signingSimulator.signingSimulator.application.ports.input.CacheService;
+import com.signingSimulator.signingSimulator.domain.User;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.LoginResDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.UserEntity;
 import com.signingSimulator.signingSimulator.common.interceptors.CacheEnum;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceException;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceExceptionEnum;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,19 +31,19 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserService userService;
 
-    public LoginResDTO logIn(UserEntity userEntity) throws ServiceException {
+    public LoginResDTO logIn(User userEntity) throws SigningSimulatorServiceException {
         LOGGER.info("log user service: " + userEntity.toString());
-        UserEntity user = this.userService.getByUserName(userEntity.getUser());
+        User user = this.userService.getByUserName(userEntity.getName());
         if (user == null) {
-            throw new ServiceException(ServiceExceptionEnum.USER_NOT_FOUND);
+            throw new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.USER_NOT_FOUND);
         }
 
         if (!user.getPassword().equals(this.passwordsUtils.encryptPass(userEntity.getPassword()))) {
-            throw new ServiceException(ServiceExceptionEnum.WRONG_PASSWORD);
+            throw new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.WRONG_PASSWORD);
         }
 
         String token = this.generateLoginToken();
-        this.cacheService.setValueCache(CacheEnum.LOGGED_USERS.getCode(), token, this.userService.getByUserName(userEntity.getUser()));
+        this.cacheService.setValueCache(CacheEnum.LOGGED_USERS.getCode(), token, this.userService.getByUserName(userEntity.getName()));
         LoginResDTO response = new LoginResDTO();
         response.setMessage(token);
         user.setPassword(null);
@@ -52,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public LoginResDTO logOut(UserEntity userEntity) throws ServiceException {
+    public LoginResDTO logOut(User userEntity) throws SigningSimulatorServiceException {
         return null;
     }
 

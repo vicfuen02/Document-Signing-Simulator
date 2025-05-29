@@ -1,56 +1,31 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Table(name="SDS_USER")
 @Entity
 public class UserEntity {
 
     @Id
-    @Column(name="USER_ID")
-    private String id;
-
-    @Column(name="USER_USERNAME")
-    private String user;
-
-    @Column(name="USER_PASSWORD")
-    private String password;
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq_user_id_gen")
+    @SequenceGenerator(name="seq_user_id_gen", sequenceName="SEQ_USER_ID", initialValue = 1000, allocationSize = 2)
+    private Long id;
 
     @Column(name="USER_NAME")
     private String name;
 
-    @Column(name="USER_SURNAME")
-    private String surname;
-
-    @Column(name="USER_EMAIL")
-    private String email;
+    @Column(name="USER_PASSWORD")
+    private String password;
 
 
     public UserEntity() {
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,32 +37,12 @@ public class UserEntity {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    @Override
-    public String toString() {
-        return "UserModel{" +
-                "id='" + id + '\'' +
-                ", user='" + user + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

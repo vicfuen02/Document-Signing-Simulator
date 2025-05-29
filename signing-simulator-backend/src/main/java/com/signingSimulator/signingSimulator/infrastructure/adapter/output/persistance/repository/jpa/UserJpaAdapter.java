@@ -2,12 +2,15 @@ package com.signingSimulator.signingSimulator.infrastructure.adapter.output.pers
 
 import com.signingSimulator.signingSimulator.application.ports.output.UserDAO;
 import com.signingSimulator.signingSimulator.domain.User;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.UserEntity;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.mapper.UserServiceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UserJpaAdapter implements UserDAO {
 
 
@@ -23,22 +26,25 @@ public class UserJpaAdapter implements UserDAO {
 
 
     @Override
-    public int createUser(User user) {
-        return userJpaRepository.createUser(userServiceMapper.toEntity(user));
+    public Long createUser(User user) {
+        return userJpaRepository.save(userServiceMapper.toEntity(user)).getId();
     }
 
     @Override
     public List<User> getAll() {
-        return userServiceMapper.toListDTO(userJpaRepository.getAll());
+        return userServiceMapper.toListDTO(userJpaRepository.findAll());
     }
 
-    @Override
-    public User getById(String id) {
-        return userServiceMapper.toDTO(userJpaRepository.getById(id));
+
+    public User getById(Long id) {
+        return userServiceMapper.toDTO(
+                userJpaRepository.findById(id).orElseThrow(() ->
+                        new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.USER_NOT_FOUND))
+        );
     }
 
     @Override
     public User getByUserName(String userName) {
-        return userServiceMapper.toDTO(userJpaRepository.getByUserName(userName));
+        return userServiceMapper.toDTO(userJpaRepository.findByName(userName));
     }
 }

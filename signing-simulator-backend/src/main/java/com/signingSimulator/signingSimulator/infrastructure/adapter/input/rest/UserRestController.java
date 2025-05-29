@@ -3,7 +3,6 @@ package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.UserReqDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.UserResDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.mapper.UserRestControllerMapper;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.UserEntity;
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +34,11 @@ public class UserRestController {
     }
 
     @GetMapping("/{id}")
-    public UserResDTO getById(String id) {
+    public UserResDTO getById(Long id) {
         return this.userRestControllerMapper.toResDTO(this.userService.getById(id));
     }
 
-    @PostMapping("/createUser")
+    @PostMapping
     public UserResDTO createUser(@RequestBody UserReqDTO user) {
         LOGGER.info("create user controller: " + user.toString());
 

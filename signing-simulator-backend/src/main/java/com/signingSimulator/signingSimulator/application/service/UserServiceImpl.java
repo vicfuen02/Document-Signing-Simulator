@@ -5,6 +5,7 @@ import com.signingSimulator.signingSimulator.domain.User;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.jpa.UserJpaRepository;
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
         return this.userDAO.getAll();
     }
 
-    public User getById(String id) {
+    public User getById(Long id) {
         return this.userDAO.getById(id);
     }
 
@@ -37,10 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Transactional
     public User createUser(User user) {
         LOGGER.info("create user service: " + user.toString());
         user.setPassword(this.passwordsUtils.encryptPass(user.getPassword()));
-        int result = this.userDAO.createUser(user);
+        Long result = this.userDAO.createUser(user);
         LOGGER.info("result insert: " + result);
         return user;
     }

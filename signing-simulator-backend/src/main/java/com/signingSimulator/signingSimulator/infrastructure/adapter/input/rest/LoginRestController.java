@@ -4,8 +4,7 @@ import com.signingSimulator.signingSimulator.application.ports.input.LoginServic
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.LoginResDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.UserReqDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.mapper.UserRestControllerMapper;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.UserEntity;
-import com.signingSimulator.signingSimulator.domain.exceptions.ServiceException;
+import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class LoginRestController extends BaseRestController {
         this.userRestControllerMapper = userRestControllerMapper;
     }
 
-    @PostMapping("/login")
+    @PostMapping
     public ResponseEntity<LoginResDTO> logIn(@RequestBody UserReqDTO user) {
         LOGGER.info("log user controller: " + user.toString());
 
@@ -48,7 +47,7 @@ public class LoginRestController extends BaseRestController {
                     .headers(responseHeaders)
                     .body(serviceResponse);
 
-        } catch (ServiceException e) {
+        } catch (SigningSimulatorServiceException e) {
             loginResDTO.setMessage(e.getMessage());
             response = ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(loginResDTO);
         }

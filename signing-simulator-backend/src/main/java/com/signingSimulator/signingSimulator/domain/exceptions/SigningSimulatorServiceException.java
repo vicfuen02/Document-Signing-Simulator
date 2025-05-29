@@ -1,39 +1,39 @@
 package com.signingSimulator.signingSimulator.domain.exceptions;
 
-public class ServiceException extends Exception {
+public class SigningSimulatorServiceException extends RuntimeException {
 
     private String code;
     private String message;
 
-    public ServiceException(ServiceExceptionEnum serviceExceptionEnum) {
-        this.code = serviceExceptionEnum.getCode();
-        this.message = serviceExceptionEnum.getMessage();
+    public SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum signingSimulatorServiceExceptionEnum) {
+        this.code = signingSimulatorServiceExceptionEnum.getCode();
+        this.message = signingSimulatorServiceExceptionEnum.getMessage();
     }
 
-    public ServiceException(String code, String message) {
+    public SigningSimulatorServiceException(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public ServiceException(String message, String code, String message1) {
+    public SigningSimulatorServiceException(String message, String code, String message1) {
         super(message);
         this.code = code;
         this.message = message1;
     }
 
-    public ServiceException(String message, Throwable cause, String code, String message1) {
+    public SigningSimulatorServiceException(String message, Throwable cause, String code, String message1) {
         super(message, cause);
         this.code = code;
         this.message = message1;
     }
 
-    public ServiceException(Throwable cause, String code, String message) {
+    public SigningSimulatorServiceException(Throwable cause, String code, String message) {
         super(cause);
         this.code = code;
         this.message = message;
     }
 
-    public ServiceException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String code, String message1) {
+    public SigningSimulatorServiceException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String code, String message1) {
         super(message, cause, enableSuppression, writableStackTrace);
         this.code = code;
         this.message = message1;
