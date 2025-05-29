@@ -1,0 +1,222 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Signing Simulator Backend",
+    "collectionId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+    "dateExported": "2024-07-16T08:34:07.346Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "49d205d2-7bad-4030-b725-7264b97b1ab6",
+            "name": "Login",
+            "containerId": "",
+            "created": "2024-07-16T08:33:20.662Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "933d4eb8-42ac-42f1-9d8a-7dad3aadc69d",
+            "name": "Users",
+            "containerId": "",
+            "created": "2024-07-16T08:33:34.519Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "56037102-85c0-4bb7-ac48-e5a6f1f83910",
+            "name": "Certificates",
+            "containerId": "",
+            "created": "2024-07-16T08:33:51.610Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "e8a6a4a2-888b-43f0-950e-cef92107c237",
+            "name": "Sign",
+            "containerId": "",
+            "created": "2024-07-16T08:34:00.763Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "5cdb725d-61da-450f-a0ea-daf295d456de",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "49d205d2-7bad-4030-b725-7264b97b1ab6",
+            "name": "Login",
+            "url": "{{URL}}/login/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-09T17:26:37.389Z",
+            "modified": "2024-07-16T07:47:18.688Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": null,\n  \"user\": \"Pepe12\",\n  \"password\": \"1234\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "header.x-user-token",
+                    "action": "setto",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "0342692a-0a45-4ae5-9479-7c76177c6f4c",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "933d4eb8-42ac-42f1-9d8a-7dad3aadc69d",
+            "name": "Create User",
+            "url": "{{URL}}/user/createUser",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-09T17:41:00.528Z",
+            "modified": "2024-07-15T09:54:54.106Z",
+            "headers": [
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": \"1002\",\n    \"user\": \"Antonio1\",\n    \"password\": \"1234\",\n    \"name\": \"Antonio\",\n    \"surname\": \"del pilar\",\n    \"email\": \"antoniodelpilar12@gmail.com\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "befe44bb-cc9f-4405-8de9-e9ee0fd5dcca",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "56037102-85c0-4bb7-ac48-e5a6f1f83910",
+            "name": "Get User Certificates",
+            "url": "{{URL}}/documents/{userId}",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-10T11:05:06.086Z",
+            "modified": "2024-07-16T07:44:16.395Z",
+            "headers": [
+                {
+                    "name": "X-User-Token",
+                    "value": "{{token}}"
+                },
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                }
+            ],
+            "params": [
+                {
+                    "name": "userId",
+                    "value": "1000",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "// {\n//   \"id\": \"1000\",\n//   \"user\": \"Pepe12\",\n//   \"password\": \"1234\"\n// }",
+                "form": []
+            }
+        },
+        {
+            "_id": "65576489-a836-48f7-b16e-db67e05a4c3b",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "e8a6a4a2-888b-43f0-950e-cef92107c237",
+            "name": "Sign Document",
+            "url": "{{URL}}/sign/{userId}",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-10T18:27:32.217Z",
+            "modified": "2024-07-16T07:43:47.783Z",
+            "headers": [
+                {
+                    "name": "X-User-Token",
+                    "value": "{{token}}"
+                },
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                }
+            ],
+            "params": [
+                {
+                    "name": "userId",
+                    "value": "1000",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"documentBytes\": \"myWonderfulDocument\",\n    \"certificatePassword\": \"123456\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "87388a79-465e-4a9e-9d56-5433c7a31b48",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "933d4eb8-42ac-42f1-9d8a-7dad3aadc69d",
+            "name": "Get All Users",
+            "url": "{{URL}}/user/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-10T06:59:16.565Z",
+            "modified": "2024-07-16T07:46:46.363Z",
+            "headers": [
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                },
+                {
+                    "name": "X-User-Token",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "9082981b-383b-486f-8cef-c9dfc9483bf1",
+            "colId": "9df5e9c0-c6c3-4867-9329-aee24a90fdf6",
+            "containerId": "56037102-85c0-4bb7-ac48-e5a6f1f83910",
+            "name": "Upload Certificate",
+            "url": "{{URL}}/documents/upload/{userId}",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-10T09:52:54.359Z",
+            "modified": "2024-07-16T07:46:15.819Z",
+            "headers": [
+                {
+                    "name": "X-User-Token",
+                    "value": "{{token}}"
+                },
+                {
+                    "name": "X-TenantID",
+                    "value": "tenant1"
+                }
+            ],
+            "params": [
+                {
+                    "name": "userId",
+                    "value": "1000",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n      \"name\": \"nombre certifcasadfo\",\n      \"certificate\": \"qwerqwerasfdfhqwef\",\n      \"password\": \"123456\",\n      \"userId\": \"1000\",\n      \"dateFrom\": 1720562400000,\n      \"dateTo\": 1720562400000\n    }",
+                "form": []
+            }
+        }
+    ],
+    "ref": "zLagPbww0L4-HDwSK3fDiQLhrzQiVT-uo7eoY4qDWjP0syizOcFojU3G4i1JOq3aZYynnYdeMujEG3oYYGUDTg"
+}
