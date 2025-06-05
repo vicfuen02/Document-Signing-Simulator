@@ -1,0 +1,38 @@
+package com.signingSimulator.signingSimulator.domain;
+
+public class PostSigningResult implements PostSingingContext {
+
+
+    private final Document document;
+    private final Certificate certificate;
+
+    private Boolean handledSuccessfully = false;
+
+
+    public PostSigningResult(Document document, Certificate certificate) {
+        this.document = document;
+        this.certificate = certificate;
+    }
+
+
+    @Override
+    public Document getDocument() {
+        return document;
+    }
+
+
+    @Override
+    public Boolean getHandledSuccessfully() {
+        return this.handledSuccessfully;
+    }
+
+
+    @Override
+    public void setHandledSuccessfully(Boolean handledSuccessfully) {
+        this.handledSuccessfully = handledSuccessfully;
+    }
+
+    public Certificate getCertificate() {
+        return certificate;
+    }
+}
