@@ -1,9 +1,9 @@
-package com.signingSimulator.signingSimulator.application.ports.input;
+package com.signingSimulator.signingSimulator.application.ports.input.signing;
 
 import com.signingSimulator.signingSimulator.domain.Certificate;
 import com.signingSimulator.signingSimulator.domain.Document;
 
 public interface SigningService {
 
-    Document signDocument(Document document, Certificate certificate);
+    Document sign(Document document, Certificate certificate);
 }

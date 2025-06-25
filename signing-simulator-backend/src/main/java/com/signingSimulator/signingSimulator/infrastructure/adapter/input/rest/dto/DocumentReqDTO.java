@@ -1,6 +1,7 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
 
+import com.signingSimulator.signingSimulator.domain.DocumentType;
 
 public class DocumentReqDTO {
 
@@ -8,6 +9,7 @@ public class DocumentReqDTO {
 
     private Long certificateId;
     private String certificatePassword;
+    private DocumentType type;
 
 
     public DocumentReqDTO() {
@@ -37,5 +39,13 @@ public class DocumentReqDTO {
 
     public void setCertificateId(Long certificateId) {
         this.certificateId = certificateId;
+    }
+
+    public DocumentType getType() {
+        return type;
+    }
+
+    public void setType(DocumentType type) {
+        this.type = type;
     }
 }

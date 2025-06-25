@@ -1,9 +1,10 @@
 package com.signingSimulator.signingSimulator.application.service;
 
+import com.signingSimulator.signingSimulator.application.ports.input.DocumentService;
 import com.signingSimulator.signingSimulator.domain.Certificate;
 import com.signingSimulator.signingSimulator.domain.Document;
-import com.signingSimulator.signingSimulator.application.ports.input.CertificateService;
-import com.signingSimulator.signingSimulator.application.ports.input.SigningService;
+import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
+import com.signingSimulator.signingSimulator.application.ports.input.signing.SigningService;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
@@ -14,41 +15,29 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class DocumentServiceImpl implements SigningService {
+public class DocumentServiceImpl implements DocumentService {
 
     Logger LOGGER = LoggerFactory.getLogger(DocumentServiceImpl.class);
 
 
     private CertificateService certificateService;
+    private SigningService signingService;
 
     private PasswordsUtils passwordsUtils;
 
     @Autowired
-    public DocumentServiceImpl(CertificateService certificateService, PasswordsUtils passwordsUtils) {
+    public DocumentServiceImpl(CertificateService certificateService, PasswordsUtils passwordsUtils, SigningService signingService) {
         this.certificateService = certificateService;
         this.passwordsUtils = passwordsUtils;
+        this.signingService = signingService;
     }
 
     public Document signDocument(Document document, Certificate certificate) {
 
         Certificate cert = this.certificateService.getCertificateById(certificate.getId());
-
-        Boolean valid = this.certificateService.checkCertificateCredentials(cert);
-        if (!valid) {
-            throw new SigningSimulatorServiceException(SigningSimulatorServiceExceptionEnum.WRONG_CERTIFICATE_PASSWORD);
-        }
-
-        return this.sign(document, cert);
+        return signingService.sign(document, cert);
     }
 
-    private Document sign(Document document, Certificate certificate) {
 
-        String signature = "Singed by: " + certificate.getName() + ". ";
-
-        Document doc = new Document();
-        doc.setSigned(true);
-        doc.setDocument(signature + document.getDocument());
-        return doc;
-    }
 
 }

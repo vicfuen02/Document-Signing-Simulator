@@ -2,7 +2,7 @@ package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest;
 
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateReqDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.mapper.CertificateRestControllerMapper;
-import com.signingSimulator.signingSimulator.application.ports.input.CertificateService;
+import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateResDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

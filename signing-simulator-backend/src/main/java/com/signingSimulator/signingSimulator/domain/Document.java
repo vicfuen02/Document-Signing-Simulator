@@ -6,6 +6,8 @@ public class Document {
 
     private Boolean signed;
 
+    private DocumentType type;
+
     public String getDocument() {
         return document;
     }
@@ -20,5 +22,13 @@ public class Document {
 
     public void setSigned(Boolean signed) {
         this.signed = signed;
+    }
+
+    public DocumentType getType() {
+        return type;
+    }
+
+    public void setType(DocumentType type) {
+        this.type = type;
     }
 }

@@ -9,7 +9,13 @@ public enum SigningSimulatorServiceExceptionEnum {
     CERT_UPLOAD_ERROR ("CTR002", "Error uploading certificate"),
     CERT_EMPTY_PASSWORD ("CTR003  ", "Certificate password can not be empty"),
     CERTIFICATES_NOT_FOUND ("CTR004", "Certification not found"),
-    WRONG_CERTIFICATE_PASSWORD ("SGN001", "Wrong certificate password")
+    WRONG_CERTIFICATE_PASSWORD ("SGN001", "Wrong certificate password"),
+    CERTIFICATE_INVALID ("SGN002", "Invalid certificate"),
+
+    INVALID_DOCUMENT_TYPE("DOC001", "Invalid document type"),
+    ERROR_POST_SIGNING("SGN003", "Error handling signing response"),
+
+    NOTIFICATION_ADDRESS_NULL("NOT001", "Notification address can not be null")
 
     ;
 

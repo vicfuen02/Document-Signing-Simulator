@@ -1,4 +1,4 @@
-package com.signingSimulator.signingSimulator.application.ports.input;
+package com.signingSimulator.signingSimulator.application.ports.input.certificate;
 
 import com.signingSimulator.signingSimulator.domain.Certificate;
 
@@ -12,6 +12,5 @@ public interface CertificateService {
 
     Certificate getCertificateById(Long id);
 
-    Boolean checkCertificateCredentials(Certificate certificate);
 
 }

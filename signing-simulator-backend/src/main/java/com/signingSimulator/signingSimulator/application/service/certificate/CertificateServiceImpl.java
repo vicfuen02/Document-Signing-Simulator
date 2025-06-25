@@ -1,14 +1,13 @@
-package com.signingSimulator.signingSimulator.application.service;
+package com.signingSimulator.signingSimulator.application.service.certificate;
 
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import com.signingSimulator.signingSimulator.application.ports.output.CertificateDAO;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
 import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.application.ports.input.CertificateService;
+import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
 import com.signingSimulator.signingSimulator.domain.User;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateResDTO;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,12 +25,10 @@ public class CertificateServiceImpl implements CertificateService {
     private CertificateDAO certificateDAO;
     private UserService userService;
 
-    private PasswordsUtils passwordsUtils;
 
     @Autowired
-    public CertificateServiceImpl(CertificateDAO certificateDAO, PasswordsUtils passwordsUtils, UserService userService) {
+    public CertificateServiceImpl(CertificateDAO certificateDAO, UserService userService) {
         this.certificateDAO = certificateDAO;
-        this.passwordsUtils = passwordsUtils;
         this.userService = userService;
     }
 
@@ -73,10 +70,6 @@ public class CertificateServiceImpl implements CertificateService {
         return certificates;
     }
 
-    public Boolean checkCertificateCredentials(Certificate certificate) {
 
-        Certificate cert = this.getCertificateById(certificate.getId());
-        return cert.getPassword().equals(this.passwordsUtils.encryptPass(certificate.getPassword()));
-    }
 
 }
