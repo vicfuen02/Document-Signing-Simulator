@@ -37,7 +37,8 @@ public class SigningNotificationSender implements PostSigningHandler {
 
         notificationService.send(notificationRequest);
         ctx.setHandledSuccessfully(true);
-
+        
+        log.info("SigningNotificationSender -- END");
         return ctx;
     }
 

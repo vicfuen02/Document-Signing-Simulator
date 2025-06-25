@@ -1,9 +1,12 @@
 package com.signingSimulator.signingSimulator.application.service.notification.strategy;
 
 import com.signingSimulator.signingSimulator.application.ports.input.notification.Sender;
+import com.signingSimulator.signingSimulator.application.service.signing.postSigning.SigningNotificationSender;
 import com.signingSimulator.signingSimulator.domain.Notification;
 import com.signingSimulator.signingSimulator.domain.NotificationRequest;
 import com.signingSimulator.signingSimulator.domain.NotificationTypeEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ import java.util.List;
 public class EmailNotificationSender implements Sender {
 
 
-
+    private static final Logger log = LogManager.getLogger(EmailNotificationSender.class);
     @Override
     public List<Notification> send(NotificationRequest notificationRequest) {
 
@@ -27,6 +30,8 @@ public class EmailNotificationSender implements Sender {
         notification.setNotificationType(this.getType());
 
         notifications.add(notification);
+
+        log.info("Notification sent to email: {}", notifications);
 
         return notifications;
     }

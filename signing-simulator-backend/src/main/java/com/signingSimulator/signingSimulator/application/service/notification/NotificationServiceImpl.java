@@ -2,10 +2,13 @@ package com.signingSimulator.signingSimulator.application.service.notification;
 
 import com.signingSimulator.signingSimulator.application.ports.input.notification.NotificationService;
 import com.signingSimulator.signingSimulator.application.ports.input.notification.Sender;
+import com.signingSimulator.signingSimulator.application.service.notification.strategy.SmsNotificationSender;
 import com.signingSimulator.signingSimulator.domain.Notification;
 import com.signingSimulator.signingSimulator.domain.NotificationRequest;
 import com.signingSimulator.signingSimulator.domain.NotificationTypeEnum;
 import com.signingSimulator.signingSimulator.domain.SentNotification;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,7 @@ import java.util.List;
 public class NotificationServiceImpl implements NotificationService {
 
 
+    private static final Logger log = LogManager.getLogger(NotificationServiceImpl.class);
     private List<Sender> senders;
     private static final List<NotificationTypeEnum> types = List.of(NotificationTypeEnum.SMS, NotificationTypeEnum.EMAIL);
 
@@ -28,6 +32,8 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public SentNotification send(NotificationRequest notificationRequest) {
 
+        log.info("Sending notifications");
+
         List<Notification> notifications = new ArrayList<>();
         for (Sender sender: senders) {
             if (types.contains(sender.getType())) {
@@ -38,6 +44,7 @@ public class NotificationServiceImpl implements NotificationService {
         SentNotification sentNotification = new SentNotification();
         sentNotification.setSentNotifications(notifications);
 
+        log.info("Notifications sent: ({})", sentNotification);
         return sentNotification;
     }
 }

@@ -16,4 +16,11 @@ public class SentNotification {
     public void setSentNotifications(List<Notification> sentNotificationRequests) {
         this.sentNotificationRequests = sentNotificationRequests;
     }
+
+    @Override
+    public String toString() {
+        return "SentNotification{" +
+                "sentNotificationRequests=" + sentNotificationRequests +
+                '}';
+    }
 }

@@ -8,6 +8,8 @@ import com.signingSimulator.signingSimulator.domain.PostSigningResult;
 import com.signingSimulator.signingSimulator.domain.PostSingingContext;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,9 @@ import java.util.List;
 
 @Component
 public class PostSigningChain implements PostSigningChainOfResponsability {
+
+
+    private static final Logger log = LogManager.getLogger(PostSigningChain.class);
 
     private List<PostSigningHandler> chain = new ArrayList<>();
 
@@ -28,8 +33,9 @@ public class PostSigningChain implements PostSigningChainOfResponsability {
     @Override
     public PostSingingContext call(Document document, Certificate certificate) {
 
-        PostSingingContext ctx = new PostSigningResult(document, certificate);
+        log.info("Starting post signing handlers");
 
+        PostSingingContext ctx = new PostSigningResult(document, certificate);
         for (PostSigningHandler handler: this.chain) {
             ctx = handler.handle(ctx);
             if (!ctx.getHandledSuccessfully()) {

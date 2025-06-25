@@ -32,4 +32,13 @@ public class Notification {
     public void setNotificationType(NotificationTypeEnum notificationType) {
         this.notificationType = notificationType;
     }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "userId=" + userId +
+                ", message='" + message + '\'' +
+                ", notificationType=" + notificationType +
+                '}';
+    }
 }

@@ -18,8 +18,9 @@ public class SignedDocumentsRegistry implements PostSigningHandler {
     @Override
     public PostSingingContext handle(PostSingingContext ctx) {
         log.info("SignedDocumentsRegistry -- START");
-
+        // TODO - insert in DB signed document to be downloaded later
         ctx.setHandledSuccessfully(true);
+        log.info("SignedDocumentsRegistry -- END");
         return ctx;
     }
 
