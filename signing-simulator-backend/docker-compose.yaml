@@ -1,0 +1,32 @@
+services:
+
+
+  db-postgresql:
+    image: postgres:17.5-alpine
+    container_name: signing-simulator-db-postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: signingSimulatorDB
+    ports:
+      - "5431:5432"
+    volumes:
+      - db-postgresql-vol:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: signing-simulator-backend
+    environment:
+      ACTIVE_PROFILE: default
+      DB_POSTGRES_USER: postgres
+      DB_POSTGRES_PASSWORD: admin
+      DB_POSTGRES_URL: jdbc:postgresql://signing-simulator-db-postgresql:5431/signingSimulatorDB
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db-postgresql
+
+volumes:
+  db-postgresql-vol:
