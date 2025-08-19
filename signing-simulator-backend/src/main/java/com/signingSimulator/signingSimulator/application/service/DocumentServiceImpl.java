@@ -1,12 +1,10 @@
 package com.signingSimulator.signingSimulator.application.service;
 
 import com.signingSimulator.signingSimulator.application.ports.input.DocumentService;
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.Document;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
 import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
 import com.signingSimulator.signingSimulator.application.ports.input.signing.SigningService;
-import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
-import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

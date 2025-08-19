@@ -1,8 +1,7 @@
 package com.signingSimulator.signingSimulator.application.service.signing.postSigning;
 
 import com.signingSimulator.signingSimulator.application.ports.input.signing.PostSigningHandler;
-import com.signingSimulator.signingSimulator.domain.Document;
-import com.signingSimulator.signingSimulator.domain.PostSingingContext;
+import com.signingSimulator.signingSimulator.domain.signing.PostSingingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.core.annotation.Order;

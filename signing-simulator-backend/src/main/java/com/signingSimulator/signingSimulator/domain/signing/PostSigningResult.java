@@ -1,4 +1,7 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.signing;
+
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
 
 public class PostSigningResult implements PostSingingContext {
 

@@ -1,4 +1,4 @@
-package com.signingSimulator.signingSimulator.application.ports.output;
+package com.signingSimulator.signingSimulator.application.ports.output.dao;
 
 import com.signingSimulator.signingSimulator.domain.User;
 

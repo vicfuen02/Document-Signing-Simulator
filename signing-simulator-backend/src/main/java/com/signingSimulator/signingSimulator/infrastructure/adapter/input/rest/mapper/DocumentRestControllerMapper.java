@@ -1,7 +1,7 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.mapper;
 
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.Document;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.DocumentReqDTO;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.DocumentResDTO;
 import org.mapstruct.Mapper;

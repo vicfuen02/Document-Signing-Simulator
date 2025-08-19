@@ -2,7 +2,7 @@ package com.signingSimulator.signingSimulator.application.service.signing.valida
 
 import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
-import com.signingSimulator.signingSimulator.domain.Certificate;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

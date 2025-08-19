@@ -5,9 +5,9 @@ import com.signingSimulator.signingSimulator.application.ports.input.signing.Sig
 import com.signingSimulator.signingSimulator.application.ports.input.signing.SigningValidator;
 import com.signingSimulator.signingSimulator.application.service.signing.signingTypes.SigningDocumentFactory;
 import com.signingSimulator.signingSimulator.application.service.signing.signingTypes.SigningDocumentStrategy;
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.Document;
-import com.signingSimulator.signingSimulator.domain.SigningValidResult;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
+import com.signingSimulator.signingSimulator.domain.signing.SigningValidResult;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import org.apache.logging.log4j.LogManager;

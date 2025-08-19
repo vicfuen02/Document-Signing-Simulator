@@ -1,5 +1,7 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.certificate;
 
+
+import com.signingSimulator.signingSimulator.domain.User;
 
 import java.util.Date;
 

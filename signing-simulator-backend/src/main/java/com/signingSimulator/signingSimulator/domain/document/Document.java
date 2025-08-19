@@ -1,4 +1,4 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.document;
 
 public class Document {
 

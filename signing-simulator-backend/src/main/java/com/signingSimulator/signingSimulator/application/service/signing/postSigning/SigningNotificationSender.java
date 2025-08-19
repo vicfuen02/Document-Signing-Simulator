@@ -2,9 +2,8 @@ package com.signingSimulator.signingSimulator.application.service.signing.postSi
 
 import com.signingSimulator.signingSimulator.application.ports.input.notification.NotificationService;
 import com.signingSimulator.signingSimulator.application.ports.input.signing.PostSigningHandler;
-import com.signingSimulator.signingSimulator.domain.Document;
-import com.signingSimulator.signingSimulator.domain.NotificationRequest;
-import com.signingSimulator.signingSimulator.domain.PostSingingContext;
+import com.signingSimulator.signingSimulator.domain.notification.NotificationRequest;
+import com.signingSimulator.signingSimulator.domain.signing.PostSingingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.signingSimulator.signingSimulator.application.service.notification.strategy;
 
 import com.signingSimulator.signingSimulator.application.ports.input.notification.Sender;
-import com.signingSimulator.signingSimulator.domain.Notification;
-import com.signingSimulator.signingSimulator.domain.NotificationRequest;
-import com.signingSimulator.signingSimulator.domain.NotificationTypeEnum;
+import com.signingSimulator.signingSimulator.domain.notification.Notification;
+import com.signingSimulator.signingSimulator.domain.notification.NotificationRequest;
+import com.signingSimulator.signingSimulator.domain.notification.NotificationTypeEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
