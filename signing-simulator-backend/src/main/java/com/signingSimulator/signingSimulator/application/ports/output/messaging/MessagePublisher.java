@@ -1,10 +1,10 @@
 package com.signingSimulator.signingSimulator.application.ports.output.messaging;
 
-import com.signingSimulator.signingSimulator.domain.event.BaseEvent;
+import com.signingSimulator.signingSimulator.domain.EventPayload;
 
-public interface MessagePublisher {
+public interface MessagePublisher<K extends EventPayload> {
 
 
-    void publishEvent(BaseEvent event);
+    void publishEvent(K event);
 
 }

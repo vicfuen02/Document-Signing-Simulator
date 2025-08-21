@@ -15,7 +15,13 @@ public enum SigningSimulatorServiceExceptionEnum {
     INVALID_DOCUMENT_TYPE("DOC001", "Invalid document type"),
     ERROR_POST_SIGNING("SGN003", "Error handling signing response"),
 
-    NOTIFICATION_ADDRESS_NULL("NOT001", "Notification address can not be null")
+    NOTIFICATION_ADDRESS_NULL("NOT001", "Notification address can not be null"),
+
+    KAFKA_PUBLISHER_ERROR("KFK001", "Error on kafka publisher"),
+
+    KAFKA_CONSUMER_ERROR("KFK002", "Error on kafka consumer"),
+
+    CONVERTING_PAYLOAD_ERROR("PYL001", "Error on kafka payload")
 
     ;
 

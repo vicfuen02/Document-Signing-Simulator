@@ -28,19 +28,19 @@ public class UserRestController {
         this.userRestControllerMapper = userRestControllerMapper;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<UserResDTO> getAll() {
         return this.userRestControllerMapper.toListResDTO(this.userService.getAll());
     }
 
     @GetMapping("/{id}")
-    public UserResDTO getById(Long id) {
+    public UserResDTO getById(@PathVariable Long id) {
         return this.userRestControllerMapper.toResDTO(this.userService.getById(id));
     }
 
     @PostMapping
     public UserResDTO createUser(@RequestBody UserReqDTO user) {
-        LOGGER.info("create user controller: " + user.toString());
+        LOGGER.info("create user controller: ({})", user);
 
         UserResDTO userCreated = userRestControllerMapper.toResDTO(this.userService.createUser(userRestControllerMapper.toDTO(user)));
 

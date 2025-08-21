@@ -10,13 +10,15 @@ import org.mapstruct.Mapper;
 public abstract class DocumentRestControllerMapper {
 
     public abstract Document toDTO(DocumentReqDTO document);
+
     public Certificate toCertificate(DocumentReqDTO documentReqDTO) {
 
         Certificate certificate = new Certificate();
         certificate.setId(documentReqDTO.getCertificateId());
         certificate.setPassword(documentReqDTO.getCertificatePassword());
         return certificate;
-    };
+    }
+
     public abstract DocumentResDTO toResDTO(Document document);
 
 }

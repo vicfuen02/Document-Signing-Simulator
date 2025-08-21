@@ -3,9 +3,10 @@ package com.signingSimulator.signingSimulator.domain.certificate;
 
 import com.signingSimulator.signingSimulator.domain.User;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Certificate {
+public class Certificate   {
 
 
     private Long id;

@@ -8,8 +8,7 @@ COPY .mvn .mvn
 RUN chmod +x mvnw
 
 COPY pom.xml .
-RUN ./mvnw dependency:go-offline -B
-
+RUN sed -i 's/\r$//' mvnw && ./mvnw dependency:go-offline -B
 COPY src ./src
 
 RUN ./mvnw clean package -DskipTests

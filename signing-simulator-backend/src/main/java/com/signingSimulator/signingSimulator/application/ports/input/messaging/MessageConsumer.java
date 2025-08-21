@@ -1,9 +1,9 @@
 package com.signingSimulator.signingSimulator.application.ports.input.messaging;
 
-import com.signingSimulator.signingSimulator.domain.event.ReceivedEvent;
+import com.signingSimulator.signingSimulator.domain.event.BaseEvent;
 
-public interface MessageConsumer {
+public interface MessageConsumer<K extends BaseEvent> {
 
-    void consumeEvent(ReceivedEvent event);
+    void consumeEvent(K event);
 
 }

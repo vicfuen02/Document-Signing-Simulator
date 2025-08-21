@@ -1,6 +1,8 @@
 package com.signingSimulator.signingSimulator.domain.document;
 
-public class Document {
+import java.io.Serializable;
+
+public class Document   {
 
     private String document;
 
