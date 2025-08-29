@@ -1,6 +1,7 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.output.event.kafka;
 
 import com.signingSimulator.signingSimulator.domain.event.BaseEvent;
+import jakarta.annotation.PreDestroy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,14 @@ public class KafkaMessagePublisherImpl<K extends Serializable, V extends BaseEve
 
         log.info("KafkaMessagePublisherImpl.publishEvent END");
 
+    }
+
+    @PreDestroy
+    public void close(){
+        if(kafkaTemplate != null){
+            log.info("Closing kafka producer");
+            kafkaTemplate.destroy();
+        }
     }
 
 

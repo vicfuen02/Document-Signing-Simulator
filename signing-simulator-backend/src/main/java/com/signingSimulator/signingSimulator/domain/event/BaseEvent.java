@@ -1,10 +1,5 @@
 package com.signingSimulator.signingSimulator.domain.event;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.signingSimulator.signingSimulator.domain.EventPayload;
-import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
-import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

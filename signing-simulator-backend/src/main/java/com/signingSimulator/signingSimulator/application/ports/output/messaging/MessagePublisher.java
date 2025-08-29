@@ -1,6 +1,6 @@
 package com.signingSimulator.signingSimulator.application.ports.output.messaging;
 
-import com.signingSimulator.signingSimulator.domain.EventPayload;
+import com.signingSimulator.signingSimulator.domain.event.EventPayload;
 
 public interface MessagePublisher<K extends EventPayload> {
 
