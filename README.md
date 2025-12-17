@@ -35,6 +35,95 @@ The project follows a **Hexagonal Architecture (Ports and Adapters)** to separat
     - `adapter/input/event` : **Kafka Consumers**.
     - `adapter/output`: **JPA Repositories**, **Kafka Producers**.
 
+### 📊 Diagrams
+
+#### High-Level Design (HLD)
+Overview of the system components and their interactions.
+
+```mermaid
+graph LR
+    User[User / Client] -- POST /document/sign --> API[Spring Boot Application]
+    
+    subgraph "Internal Flow"
+        API -- 1. Validates & Signs --> Domain[Signing Logic]
+        Domain -- 2. Publishes Event --> Kafka{Apache Kafka}
+    end
+    
+    Kafka -- 3. Consumes (Async) --> API
+    API -- 4. Process Post-Signing --> DB[(PostgreSQL)]
+    
+    subgraph "Infrastructure"
+        DB
+        Kafka
+    end
+```
+
+#### Low-Level Design (LLD) - Hexagonal Architecture
+Detailed view of the **Signing Flow** using actual class names.
+
+```mermaid
+classDiagram
+    direction LR
+
+    %% Input Adapter
+    class DocumentRestController {
+        <<Rest Controller>>
+        +signDocument(DocumentReqDTO)
+    }
+
+    %% Ports (Interfaces)
+    class DocumentService {
+        <<Input Port>>
+        +signDocument()
+    }
+
+    class SigningService {
+        <<Input Port>>
+        +sign()
+    }
+
+    class MessagePublisher {
+        <<Output Port>>
+        +publishEvent()
+    }
+
+    %% Implementation (Application/Domain)
+    class DocumentServiceImpl {
+        <<Service>>
+        +signDocument()
+    }
+
+    class SigningServiceImpl {
+        <<Service>>
+        -Validation
+        -SigningStrategy
+        +sign()
+    }
+
+    %% Output Adapter
+    class PostSigningProcessorKafkaPublisherAdapter {
+        <<Kafka Producer>>
+        +publishEvent()
+    }
+    
+    %% Input Adapter (Consumer)
+    class PostSigningProcessorKafkaConsumerAdapter {
+        <<Kafka Listener>>
+        +consumeEvent()
+    }
+
+    %% Relationships
+    DocumentRestController --> DocumentService : Calls
+    DocumentServiceImpl ..|> DocumentService : Implements
+    DocumentServiceImpl --> SigningService : Calls
+    SigningServiceImpl ..|> SigningService : Implements
+    SigningServiceImpl --> MessagePublisher : Uses
+    PostSigningProcessorKafkaPublisherAdapter ..|> MessagePublisher : Implements
+    
+    %% Async Link
+    PostSigningProcessorKafkaPublisherAdapter ..> PostSigningProcessorKafkaConsumerAdapter : "Async Event (Kafka)"
+```
+
 ---
 
 ## 🚀 Key Features & Implementation Details
