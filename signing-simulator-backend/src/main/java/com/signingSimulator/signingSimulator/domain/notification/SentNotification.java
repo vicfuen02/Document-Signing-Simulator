@@ -1,4 +1,6 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.notification;
+
+import com.signingSimulator.signingSimulator.domain.notification.Notification;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.signingSimulator.signingSimulator.application.service.signing.signingTypes;
 
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.Document;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;
 import org.springframework.beans.factory.annotation.Autowired;

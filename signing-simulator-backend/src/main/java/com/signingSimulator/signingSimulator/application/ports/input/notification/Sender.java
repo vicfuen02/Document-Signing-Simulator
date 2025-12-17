@@ -1,8 +1,8 @@
 package com.signingSimulator.signingSimulator.application.ports.input.notification;
 
-import com.signingSimulator.signingSimulator.domain.Notification;
-import com.signingSimulator.signingSimulator.domain.NotificationRequest;
-import com.signingSimulator.signingSimulator.domain.NotificationTypeEnum;
+import com.signingSimulator.signingSimulator.domain.notification.Notification;
+import com.signingSimulator.signingSimulator.domain.notification.NotificationRequest;
+import com.signingSimulator.signingSimulator.domain.notification.NotificationTypeEnum;
 
 import java.util.List;
 

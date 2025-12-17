@@ -1,4 +1,4 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.notification;
 
 public enum NotificationTypeEnum {
 

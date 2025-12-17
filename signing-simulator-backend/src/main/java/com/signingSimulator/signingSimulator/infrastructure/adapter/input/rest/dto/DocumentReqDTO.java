@@ -1,7 +1,7 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto;
 
 
-import com.signingSimulator.signingSimulator.domain.DocumentType;
+import com.signingSimulator.signingSimulator.domain.document.DocumentType;
 
 public class DocumentReqDTO {
 

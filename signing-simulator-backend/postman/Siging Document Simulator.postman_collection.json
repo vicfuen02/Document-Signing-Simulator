@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "b4b9adae-c9e6-49e0-9d23-8c8d301e7cc7",
+		"name": "Siging Document Simulator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42754225"
+	},
+	"item": [
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "Sign document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"documentbytes\",\r\n    \"certificateId\": 1000,\r\n    \"certificatePassword\": \"admin\",\r\n    \"type\": \"PDF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/document/sign/:certificateId",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"document",
+								"sign",
+								":certificateId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "certificateId",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Certificate",
+			"item": [
+				{
+					"name": "Get User Certificates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/certificate/:userId",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"certificate",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Certificate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"my certificate\",\r\n    \"certificate\": \"certificatebytes\",\r\n    \"password\": \"admin\",\r\n    \"dateFrom\": \"\",\r\n    \"dateTo\": \"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/certificate/:userId",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"certificate",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user\",\r\n    \"password\": \"admin\"\r\n\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/user",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": []
+		}
+	]
+}

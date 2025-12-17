@@ -1,9 +1,7 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.mapper;
 
 
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateReqDTO;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.input.rest.dto.CertificateResDTO;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
 import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.entity.CertificateEntity;
 import org.mapstruct.Mapper;
 

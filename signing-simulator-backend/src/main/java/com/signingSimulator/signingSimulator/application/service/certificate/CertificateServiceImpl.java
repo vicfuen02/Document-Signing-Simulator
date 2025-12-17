@@ -1,9 +1,8 @@
 package com.signingSimulator.signingSimulator.application.service.certificate;
 
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
-import com.signingSimulator.signingSimulator.application.ports.output.CertificateDAO;
-import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
-import com.signingSimulator.signingSimulator.domain.Certificate;
+import com.signingSimulator.signingSimulator.application.ports.output.dao.CertificateDAO;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
 import com.signingSimulator.signingSimulator.application.ports.input.certificate.CertificateService;
 import com.signingSimulator.signingSimulator.domain.User;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;

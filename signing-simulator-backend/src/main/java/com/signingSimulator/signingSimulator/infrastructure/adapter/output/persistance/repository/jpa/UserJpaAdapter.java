@@ -1,6 +1,6 @@
 package com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.jpa;
 
-import com.signingSimulator.signingSimulator.application.ports.output.UserDAO;
+import com.signingSimulator.signingSimulator.application.ports.output.dao.UserDAO;
 import com.signingSimulator.signingSimulator.domain.User;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;

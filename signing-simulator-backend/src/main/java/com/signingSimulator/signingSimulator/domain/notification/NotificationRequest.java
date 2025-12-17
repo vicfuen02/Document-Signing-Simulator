@@ -1,4 +1,4 @@
-package com.signingSimulator.signingSimulator.domain;
+package com.signingSimulator.signingSimulator.domain.notification;
 
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceException;
 import com.signingSimulator.signingSimulator.domain.exceptions.SigningSimulatorServiceExceptionEnum;

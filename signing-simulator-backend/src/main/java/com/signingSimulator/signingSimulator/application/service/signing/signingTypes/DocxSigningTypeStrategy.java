@@ -1,8 +1,8 @@
 package com.signingSimulator.signingSimulator.application.service.signing.signingTypes;
 
-import com.signingSimulator.signingSimulator.domain.Certificate;
-import com.signingSimulator.signingSimulator.domain.Document;
-import com.signingSimulator.signingSimulator.domain.DocumentType;
+import com.signingSimulator.signingSimulator.domain.certificate.Certificate;
+import com.signingSimulator.signingSimulator.domain.document.Document;
+import com.signingSimulator.signingSimulator.domain.document.DocumentType;
 import org.springframework.stereotype.Component;
 
 @Component

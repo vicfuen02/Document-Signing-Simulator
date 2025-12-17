@@ -1,8 +1,7 @@
 package com.signingSimulator.signingSimulator.application.service;
 
-import com.signingSimulator.signingSimulator.application.ports.output.UserDAO;
+import com.signingSimulator.signingSimulator.application.ports.output.dao.UserDAO;
 import com.signingSimulator.signingSimulator.domain.User;
-import com.signingSimulator.signingSimulator.infrastructure.adapter.output.persistance.repository.jpa.UserJpaRepository;
 import com.signingSimulator.signingSimulator.application.ports.input.UserService;
 import com.signingSimulator.signingSimulator.common.interceptors.PasswordsUtils;
 import jakarta.transaction.Transactional;
