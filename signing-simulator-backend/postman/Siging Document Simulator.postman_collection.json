@@ -152,10 +152,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Login",
-			"item": []
 		}
 	]
 }

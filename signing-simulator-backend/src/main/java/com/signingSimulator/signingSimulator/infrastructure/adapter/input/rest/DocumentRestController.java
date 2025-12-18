@@ -27,8 +27,9 @@ public class DocumentRestController extends BaseRestController {
         this.documentRestControllerMapper = documentRestControllerMapper;
     }
 
-    @PostMapping("/sign")
-    public DocumentResDTO signDocument(@RequestBody DocumentReqDTO documentReqDTO) {
+    @PostMapping("/sign/{certificateId}")
+    public DocumentResDTO signDocument(@PathVariable Long certificateId, @RequestBody DocumentReqDTO documentReqDTO) {
+        documentReqDTO.setCertificateId(certificateId);
         return documentRestControllerMapper.toResDTO(
                 this.documentService.signDocument(
                         documentRestControllerMapper.toDTO(documentReqDTO),
